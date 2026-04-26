@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;500;600;700&family=ZCOOL+XiaoWei&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #fdfbf7;
+    color: #71402c;
+    font-family: "Noto Sans SC", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+  }
+
+  * {
+    border-color: #f5eddf;
+  }
+
+  ::selection {
+    background-color: #cddfcb;
+    color: #283927;
+  }
+}
+
+@layer components {
+  /* 宣纸质感背景 */
+  .paper-bg {
+    background-color: #fbf8f3;
+    border-radius: 2rem;
+    background-image:
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+    box-shadow:
+      inset 0 0 40px rgba(139, 90, 43, 0.03),
+      0 4px 24px -4px rgba(90, 60, 30, 0.08);
+  }
+
+  /* 草药卡片 */
+  .herb-card {
+    background-color: rgb(255 255 255 / 0.7);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border-radius: 2rem;
+    padding: 2rem;
+    box-shadow:
+      0 0 0 1px rgba(200, 180, 150, 0.15),
+      0 8px 40px -8px rgba(90, 60, 30, 0.12);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+
+  @media (min-width: 768px) {
+    .herb-card {
+      padding: 2.5rem;
+    }
+  }
+
+  /* 呼吸动效 */
+  .breath-anim {
+    animation: breath 4s ease-in-out infinite;
+  }
+
+  @keyframes breath {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 8px 40px -8px rgba(90, 60, 30, 0.12);
+    }
+    50% {
+      transform: scale(1.008);
+      box-shadow: 0 12px 48px -8px rgba(90, 60, 30, 0.16);
+    }
+  }
+
+  /* 浮动动效 */
+  .float-anim {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* 呼吸动效 */
+  @keyframes floatBreath {
+    0%, 100% { transform: translateY(0px) scale(1); opacity: 1; }
+    33% { transform: translateY(-8px) scale(1.005); opacity: 0.95; }
+    66% { transform: translateY(-4px) scale(1.002); opacity: 0.97; }
+  }
+
+  .float-breath {
+    animation: floatBreath 5s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .result-display-font {
+    font-family: "ZCOOL XiaoWei", "Noto Serif SC", serif;
+  }
+
+  .text-shadow-soft {
+    text-shadow: 0 2px 8px rgba(90, 60, 30, 0.1);
+  }
+}
